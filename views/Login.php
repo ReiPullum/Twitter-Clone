@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+<h1>WelCome to Twitter Clone</h1>
+<h2>Login</h2>
+<form action="login.php" method="post">
+    <div id="data">
+        <label>User Name</label>
+        <input type="text" name="username"><br>
+        <label>Password</label>
+        <input type="password" name="password"><br>
+        <input type="hidden" name="action" value="submitLogin"/>
+    </div>
+    <div id="buttons">
+        <label>&nbsp;</label>
+        <input type="submit" value="Login"><br>
+    </div>
+</form>
+
