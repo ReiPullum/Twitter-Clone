@@ -3,7 +3,7 @@
 session_start();
 
 require('./models/database.php');
-//require('./models/stock_database.php');
+require('./models/twitter_database.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {

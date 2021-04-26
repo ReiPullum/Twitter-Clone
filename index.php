@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <label>Hello There Can you see this?<label/>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+<?php
+require('./models/database.php');
+require('./models/twitter_database.php');
+
+$action = filter_input(INPUT_POST, 'action');
+if ($action == NULL) {
+    $action = filter_input(INPUT_GET, 'action');
+    if ($action == NULL) {
+        $action = 'tweets';
+    }
+     require('./views/Login.php');
+}
+?>

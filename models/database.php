@@ -1,8 +1,15 @@
 <?php
+try {
+    $data_source_name = 'mysql:host=localhost;dbname=test';
+    $user_name = 'root';
+    $password = 'test';
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+  //  $stock_symbol = filter_input(INPUT_GET, 'stock_symbol');
+
+    $db = new PDO($data_source_name, $user_name, $password);
+} catch (PDOException $ex) {
+    $error_message = $ex->getMessage();
+    include('database_error.php');
+    exit();
+}
 
