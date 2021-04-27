@@ -4,7 +4,7 @@ try {
     $user_name = 'root';
     $password = 'test';
 
-  //  $stock_symbol = filter_input(INPUT_GET, 'stock_symbol');
+   $user_id= filter_input(INPUT_GET, 'user_id');
 
     $db = new PDO($data_source_name, $user_name, $password);
 } catch (PDOException $ex) {
