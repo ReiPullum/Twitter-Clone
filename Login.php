@@ -4,7 +4,19 @@ session_start();
 
 require('./models/database.php');
 require('./models/twitter_database.php');
+if($action == 'Login'){
+    include'./views/login.php';
+}
 
+if($action == 'login'){
+    
+}
+else if($action == 'changePass'){
+    
+}
+else if($action == 'newUser'){
+    
+}
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
