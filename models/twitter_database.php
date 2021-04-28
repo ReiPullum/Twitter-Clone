@@ -60,19 +60,3 @@ function get_image($id){
 
     return $image;
 }
-function get_guest_tweets() {
-    global $db; // tells PHP to go find the $db variable defined already
-
-    $query = "select * from user "
-            . "join stockorder on stockorder.user_id = user.id "
-            . "join stock on stock.id = stockorder.stock_id";
-    $statement = $db->prepare($query);
-
-    $statement->execute();
-
-    $stockOrders = $statement->fetchAll();
-
-    $statement->closeCursor();
-
-    return $guesttweets;
-}
