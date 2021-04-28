@@ -4,8 +4,8 @@ require('./models/twitter_database.php');
 
  include "./views/header.php"; ?>
 
-<h1>WelCome to Twitter Clone</h1>
-
+<h1>Welcome to Twitter Clone</h1>
+<h2>Hello<h2/>
 
 <h2>Login</h2>
 <form action="login.php" method="post">
