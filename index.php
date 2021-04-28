@@ -1,14 +1,22 @@
 <?php
 
-require('./views/login.php');
+
 $action = filter_input(INPUT_POST, 'action');
-
-
-if ($action == NULL) {
-    $action = filter_input(INPUT_GET, 'action');
-    if ($action == NULL) {
-        $action = 'submitLogin';
-        
-    }
-     require('./views/Login.php');
+if ($action == NULL || $action == false || $action == "") {
+   $action = 'tweets';
+     
 }
+if($action == 'tweets'){
+    include'./views/Login.php';
+}
+else if($action == 'login'){
+    
+}
+else if($action == 'changePass'){
+    
+}
+else if($action == 'newUser'){
+    
+}
+
+?>

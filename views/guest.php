@@ -1,17 +1,25 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+
+<?php 
+require'./models/database.php';
+require'./models/twitter_database.php';
+include "./views/header.php";
+?>
+
+
+
+    <h1>Explore the World and Meet New People!<h1/>
+    <h2>Want to join Twitter Clone? Click the link below<h2/>
+    <a href="index.php">Click Here<a/>
+
+    <table>
+<?php foreach (get_guest_tweets() as $tweets) : ?>
+                <tr>
+                    <td><?php echo $tweets['name']; ?> </td>
+                    <td><?php echo $tweets['tweet']; ?></td>
+                    
+                </tr>
+<?php endforeach; ?>
+
+        </table>
+
+<?php include 'footer.php';?>
