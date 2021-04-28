@@ -8,11 +8,23 @@ function get_tweets() {
 
     $statement->execute();
 
-    $tweets = $statement->fetchAll();
+    $tweet = $statement->fetchAll();
 
     $statement->closeCursor();
 
-    return $tweets;
+    return $tweet;
+}
+
+function change_password($user_name, $id) {
+    global $db;
+
+    $query = 'update user set password_hash = :id where name = :user_name';
+    $statement = $db->prepare($query);
+    $statement->bindValue(":user_name", $user_name);
+    $statement->bindValue(":id", $id);
+
+    $statement->execute();
+    $statement->closeCursor();
 }
 function get_user($username) {
     global $db; // tells PHP to go find the $db variable defined already
@@ -64,15 +76,18 @@ function get_guest_tweets() {
     global $db; // tells PHP to go find the $db variable defined already
 
     $query = "select * from user "
-            . "join stockorder on stockorder.user_id = user.id "
-            . "join stock on stock.id = stockorder.stock_id";
+            . "join tweets on tweets.user_id = user.id " ;
+            
+            
     $statement = $db->prepare($query);
 
     $statement->execute();
 
-    $stockOrders = $statement->fetchAll();
+    $guesttweets = $statement->fetchAll();
 
     $statement->closeCursor();
 
     return $guesttweets;
 }
+
+
