@@ -7,7 +7,7 @@ if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
    if ($action == NULL) {
         $action = 'tweets';
-       require('./views/guest.php');
+       require('./views/welcome.php');
     }
  
 }
