@@ -4,7 +4,7 @@ session_start();
 
 require('./models/database.php');
 require('./models/twitter_database.php');
-if($action == 'Login'){
+if($action == 'login'){
     include'./views/login.php';
 }
 
