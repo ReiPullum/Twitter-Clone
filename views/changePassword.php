@@ -1,5 +1,5 @@
 <?php
-include "./views/header.php";
+include "header.php";
 ?>
 <h2>Please Enter your Username and new Password Below</h2>
 

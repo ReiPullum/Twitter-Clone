@@ -13,7 +13,7 @@ if ($action == NULL) {
     }
  
 }
-/*if($action == 'login'){
+if($action == 'login'){
     
     $username = filter_input(INPUT_POST, 'username');
     $password = filter_input(INPUT_POST, 'password');
@@ -35,7 +35,7 @@ else if($action == 'changePass'){
 }
 else if($action == 'newUser'){
     
-}*/
+}
 
     
 ?>

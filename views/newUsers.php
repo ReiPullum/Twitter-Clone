@@ -1,5 +1,5 @@
 <?php
-include "./views/header.php";
+include "header.php";
 ?>
 <h2>Enter Your Desired Username/Password for your new Account</h2>
 

@@ -1,4 +1,4 @@
-<?php include "./views/header.php"; ?>
+<?php include "header.php"; ?>
     <body>
         
         
@@ -15,4 +15,4 @@
                 </tr>
             <?php endforeach; ?>
         </table>
-        <?php include './views/footer.php'; ?>
+        <?php include 'footer.php'; ?>
