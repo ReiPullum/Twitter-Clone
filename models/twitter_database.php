@@ -15,7 +15,7 @@ function get_tweets() {
     return $tweet;
 }
 
-function change_password($user_name, $id) {
+function change_password($user_name) {
     global $db;
 
     $query = 'update user set password_hash = :id where name = :user_name';

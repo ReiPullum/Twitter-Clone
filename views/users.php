@@ -2,9 +2,8 @@
     <body>
         
         
-        <h1>User's Page</h1>
-        <h3>List of tweets with no of likes</h3>
-        <h3>Follow & Unfollow People</h3>
+        <h2>Explore the World and see the Latest</h2>
+        <h3>Follow others to stay posted</h3>
         <table>
             <th>Name</th>
             

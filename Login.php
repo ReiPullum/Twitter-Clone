@@ -3,20 +3,8 @@
 session_start();
 
 require('./models/database.php');
-require('./models/twitter_database.php');
-if($action == 'login'){
-    include'./views/login.php';
-}
+require('./models/stock_database.php');
 
-if($action == 'login'){
-    
-}
-else if($action == 'changePass'){
-    
-}
-else if($action == 'newUser'){
-    
-}
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
@@ -42,7 +30,7 @@ if ($action == 'logout'){
             echo "login successful";
             $_SESSION['is_logged_in'] = true;
             $_SESSION['username'] = $username;
-            header("Location: ./users.php");
+            header("Location: ./.php");
         } else {
             echo "incorrect password";
         }
