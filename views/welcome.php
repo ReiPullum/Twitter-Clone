@@ -2,7 +2,7 @@
 include "./views/header.php";
 ?>
 <h2>Welcome to Twitter-Clone!!</h2>
-<h3>Login below or sign in as a guest to continue</h3>
+<h3>Login Below to Continue</h3>
 
 
 
@@ -38,11 +38,9 @@ include "./views/header.php";
         <input type="hidden" name="action" value="change_password"/>
         <input type="submit" value="Create New User"><br><br>   
         <input type="hidden" name="action" value="add_user"/>
-        <input type="submit" value="Login as Guest"><br><br>   
-        <input type="hidden" name="action" value="guestUser"/>
+
   
         <!--Page View Samples Below, change into submit buttons-->
-        <a href="views/guest.php">Login as Guest view sample test</a><br><br>
         <a href="views/changePassword.php">Change Password view sample test</a><br><br>
         <a href="views/users.php">User view sample Test</a><br><br>
         <a href="views/newUsers.php">New User view sample Test</a><br><br>
