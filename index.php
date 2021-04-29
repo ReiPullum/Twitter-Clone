@@ -11,24 +11,22 @@ if ($action == NULL) {
     }
  
 }
-
-    
-    if ( $action == 'add_user') {
-    $user_name = filter_input(INPUT_POST, 'user_name');
-    $password = filter_input(INPUT_POST, 'password');
-    
-    if ($user_name == null || $password == null) {
-        $error = "missing username or password";
-        include('./views/error.php');
-    } else {
-         $password_hash = password_hash($password, PASSWORD_BCRYPT);
-    
-        add_user($user_name, $password_hash);
-        require('./views/users.php');
-    } 
-}
 if($action == 'login'){
     
+    $username = filter_input(INPUT_POST, 'username');
+    $password = filter_input(INPUT_POST, 'password');
+
+    $user = get_user($username);
+}
+    if ($user != NULL) {
+        if (password_verify($password, $user['password_hash'])) {
+            echo "login successful";
+            $_SESSION['is_logged_in'] = true;
+            $_SESSION['username'] = $username;
+            header("Location: ./users.php");
+        } else {
+            echo "incorrect password";
+        }
 }
 else if($action == 'changePass'){
     
