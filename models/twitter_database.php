@@ -26,14 +26,13 @@ function change_password($user_name) {
     $statement->execute();
     $statement->closeCursor();
 }
-function get_user($username) {
+
+function get_user() {
     global $db; // tells PHP to go find the $db variable defined already
 
-    $query = "SELECT * from user where name = :username";
-    
+    $query = "SELECT * from user ";
+
     $statement = $db->prepare($query);
-    
-    $statement->bindValue(':username', $username);
 
     $statement->execute();
 
@@ -42,11 +41,11 @@ function get_user($username) {
     $statement->closeCursor();
 
     return $user;
-    
 }
-function upload_image($image_data, $name){
+
+function upload_image($image_data, $name) {
     global $db;
-    
+
     $query = 'INSERT INTO tweets (data, name)'
             . 'values ( :data, :name)';
     $statement = $db->prepare($query);
@@ -57,7 +56,7 @@ function upload_image($image_data, $name){
     $statement->closeCursor();
 }
 
-function get_image($id){
+function get_image($id) {
     global $db;
 
     $query = "select * from tweets where id = :id";
@@ -72,13 +71,13 @@ function get_image($id){
 
     return $image;
 }
+
 function get_guest_tweets() {
     global $db; // tells PHP to go find the $db variable defined already
 
     $query = "select * from user "
-            . "join tweets on tweets.user_id = user.id " ;
-            
-            
+            . "join tweets on tweets.user_id = user.id ";
+
     $statement = $db->prepare($query);
 
     $statement->execute();
@@ -90,4 +89,22 @@ function get_guest_tweets() {
     return $guesttweets;
 }
 
+function check_Signin($username, $password) {
+    $message = "not verified";
+    foreach (get_user() as $users) {
+        if ($username == $users['name']) {
+            if ($password == $users['password_hash']) {
+                $message = "verified";
+                break;
+            } else {
+                $message = "not verified";
+                break;
+            }
+        } else {
+            continue;
+        }
+    }
+    return $message;
+}
 
+?>
