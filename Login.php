@@ -42,7 +42,7 @@ if ($action == 'logout'){
             echo "login successful";
             $_SESSION['is_logged_in'] = true;
             $_SESSION['username'] = $username;
-            header("Location: ./StockOrder.php");
+            header("Location: ./users.php");
         } else {
             echo "incorrect password";
         }

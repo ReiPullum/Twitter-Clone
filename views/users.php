@@ -1,6 +1,6 @@
 <?php include "./views/header.php"; ?>
     <body>
-        <?php include "./views/navigation.php"; ?>
+        
         
         <h1>User's Page</h1>
         <h3>List of tweets with no of likes</h3>
