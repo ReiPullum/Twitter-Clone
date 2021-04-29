@@ -9,8 +9,10 @@ include "./views/header.php";
 <table>
     <?php foreach (get_guest_tweets() as $tweets) : ?>
         <tr>
+           
             <td><?php echo $tweets['name']; ?> </td>
             <td><?php echo $tweets['tweet']; ?></td>
+            <td><?php echo $tweets['likes']; ?></td>
         </tr>
     <?php endforeach; ?>
 
