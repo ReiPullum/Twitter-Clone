@@ -19,7 +19,7 @@ else if($action == 'login'){
     $password = filter_input(INPUT_POST, 'password');
     echo '$username';
     echo '$password';
-    $user = check_Signin($username,$password);
+    $user = twitter_database::check_Signin($username,$password);
     if ($user == "verified") {
         
             echo 'login successful';

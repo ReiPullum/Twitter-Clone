@@ -91,6 +91,8 @@ function get_guest_tweets() {
 
 function check_Signin($username, $password) {
     $message = "not verified";
+       echo '$username';
+    echo '$password';
     foreach (get_user() as $users) {
         if ($username == $users['name']) {
             if ($password == $users['password_hash']) {
