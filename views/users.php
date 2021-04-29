@@ -9,9 +9,9 @@
             <th>Name</th>
             
                     
-            <?php foreach ($users as $user) : ?>
+            <?php foreach (get_user() as $users) : ?>
                 <tr>
-                    <td><?php echo $user['name']; ?> </td>
+                    <td><?php echo $users['name']; ?> </td>
                     
                 </tr>
             <?php endforeach; ?>

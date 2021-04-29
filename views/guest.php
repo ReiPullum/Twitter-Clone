@@ -19,19 +19,21 @@ include "./views/header.php";
 <form action="index.php" method="post">
     <div id="data">
         <label>User Name</label>
-        <input type="text" name="username"><br><br>
+        <input type="text" name="user_name"><br><br>
         <label>Password</label>
         <input type="password" name="password"><br><br>
-
+        <input type="hidden" name="action" value="add_user"/>
+        
     </div>
     <div id="buttons">          
         <label>&nbsp;</label>
+        
+        <input type="submit" value="Create New User"><br><br>
         <input type="submit" value="Login"><br><br>
         <input type="hidden" name="action" value="login"/>
         <input type="submit" value="Change Password "><br><br>
         <input type="hidden" name="action" value="changePass"/>
-        <input type="submit" value="Create New User"><br><br>   
-        <input type="hidden" name="action" value="newUser"/>
+        <input type="hidden" name="action" value="add_user"/>
 
 
     </div>

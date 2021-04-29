@@ -90,4 +90,15 @@ function get_guest_tweets() {
     return $guesttweets;
 }
 
+function add_user($user_name, $password_hash) {
+    global $db;
 
+    $query = 'INSERT INTO USER (name, password_hash)'
+            . 'values ( :user_name, :password_hash)';
+    $statement = $db->prepare($query);
+    $statement->bindValue(":user_name", $user_name);
+    $statement->bindValue(":password_hash", $password_hash);
+
+    $statement->execute();
+    $statement->closeCursor();
+}
