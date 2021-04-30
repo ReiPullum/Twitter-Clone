@@ -14,15 +14,35 @@ function get_tweets() {
 
     return $tweet;
 }
+function get_user_tweets() {
+    global $db; // tells PHP to go find the $db variable defined already
 
-function change_password($user_name) {
+    $query = "select * from user "
+            . "join tweets on tweets.user_id = user.id "
+            . " where user.name = :user_name " 
+            . " order by timestamp ";
+
+    $statement = $db->prepare($query);
+
+       $statement->bindValue(":user_name", $_SESSION['username']);
+
+    $statement->execute();
+        
+
+    $usertweets = $statement->fetchAll();
+
+    $statement->closeCursor();
+
+    return $usertweets;
+}
+function change_password($user_name,$password) {
     global $db;
 
-    $query = 'update user set password_hash = :id where name = :user_name';
+    $query = 'update user set password_hash = :password where name = :user_name';
     $statement = $db->prepare($query);
     $statement->bindValue(":user_name", $user_name);
-    $statement->bindValue(":id", $id);
-
+    $statement->bindValue(":password", $password);
+    
     $statement->execute();
     $statement->closeCursor();
 }
@@ -36,11 +56,23 @@ function get_user() {
 
     $statement->execute();
 
-    $user = $statement->fetch();
+    $user = $statement->fetchAll();
 
     $statement->closeCursor();
 
     return $user;
+}
+function add_user($user_name, $password_hash) {
+    global $db;
+
+    $query = 'INSERT INTO USER (name, password_hash)'
+            . 'values ( :user_name, :password_hash)';
+    $statement = $db->prepare($query);
+    $statement->bindValue(":user_name", $user_name);
+    $statement->bindValue(":password_hash", $password_hash);
+
+    $statement->execute();
+    $statement->closeCursor();
 }
 
 function upload_image($image_data, $name) {
@@ -51,6 +83,18 @@ function upload_image($image_data, $name) {
     $statement = $db->prepare($query);
     $statement->bindValue(":data", $image_data);
     $statement->bindValue(":name", $name);
+
+    $statement->execute();
+    $statement->closeCursor();
+}
+function add_tweets($createtweet) {
+    global $db;
+
+    $query = 'INSERT INTO tweets (tweet,user_id)'
+            . 'values ( :text, :id)';
+    $statement = $db->prepare($query);
+    $statement->bindValue(":text", $createtweet);
+    $statement->bindValue(":id", $_SESSION['ID']);
 
     $statement->execute();
     $statement->closeCursor();
@@ -91,12 +135,12 @@ function get_guest_tweets() {
 
 function check_Signin($username, $password) {
     $message = "not verified";
-       echo '$username';
-    echo '$password';
+       
     foreach (get_user() as $users) {
         if ($username == $users['name']) {
             if ($password == $users['password_hash']) {
                 $message = "verified";
+                $_SESSION['ID']=$users['id'];
                 break;
             } else {
                 $message = "not verified";
