@@ -6,52 +6,53 @@ include "./views/header.php";
 <table>
     <th>Name</th>
 
-    
+
     <?php foreach (get_user_tweets() as $tweets) : ?>
         <tr>
             <td><?php echo $tweets['name']; ?> </td>
             <td><?php echo $tweets['tweet']; ?> </td>
             <td><?php echo $tweets['likes']; ?> </td>
             <td><?php echo $tweets['timestamp']; ?> </td>
-            <td> <label>Follow</label>
-            <input type="radio" value="follow" name="followRadio">
-            <label>Unfollow</label>
-            <input type="radio" value="unfollow" name="followRadio"></td>
+
 
         </tr>
     <?php endforeach; ?>
-        
+
 </table>
 <h2>Add Tweet</h2>
-    <form action="index.php" method="post">
-        <div id="data">
-            <label>Create Tweet</label>
-           <input type="text" name="create_tweet"><br>
-            <input type="hidden" name="action" value="add_tweet" />
+<form action="index.php" method="post">
+    <div id="data">
+        <label>Create Tweet</label>
+        <input type="text" name="create_tweet"><br>
+        <input type="hidden" name="action" value="add_tweet" />
 
-        </div>
-        <div id="buttons">
-            <label>&nbsp;</label>
-            <input type="submit" value="Add Tweet"><br>
-        </div>
-    </form>
+    </div>
+    <div id="buttons">
+        <label>&nbsp;</label>
+        <input type="submit" value="Add Tweet"><br>
+    </div>
+</form>
+<br><br><br><br>
+<h2>Follow/unfollow</h2>
 <table>
-    <th>Name</th>
 
-    
-    <?php foreach (get_user_tweets() as $tweets) : ?>
-        <tr>
-            <td><?php echo $tweets['name']; ?> </td>
-            <td><?php echo $tweets['tweet']; ?> </td>
-            <td><?php echo $tweets['likes']; ?> </td>
-            <td><?php echo $tweets['timestamp']; ?> </td>
-            <td> <label>Follow</label>
-            <input type="radio" value="follow" name="followRadio">
-            <label>Unfollow</label>
-            <input type="radio" value="unfollow" name="followRadio"></td>
 
-        </tr>
-    <?php endforeach; ?>
-        
+
+    <?php
+    foreach (get_user_follow() as $tweets) :
+        if ($tweets['name'] != $_SESSION['username']) {
+            ?>
+            <tr>
+                <td><?php echo $tweets['name']; ?> </td>
+                
+                <td> <label>Follow</label>
+                    
+                    <input type="radio" value="follow" name="followRadio">
+                    <label>Unfollow</label>
+                    <input type="radio" value="unfollow" name="followRadio"></td>
+
+            </tr>
+        <?php } endforeach; ?>
+
 </table>
 <?php include 'footer.php'; ?>

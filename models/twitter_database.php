@@ -152,5 +152,24 @@ function check_Signin($username, $password) {
     }
     return $message;
 }
+function get_user_follow() {
+    global $db; // tells PHP to go find the $db variable defined already
 
+    $query = "select * from user "
+            . " left join following on following.user_id = user.id ";
+            
+
+    $statement = $db->prepare($query);
+
+      
+
+    $statement->execute();
+        
+
+    $usertweets = $statement->fetchAll();
+
+    $statement->closeCursor();
+
+    return $usertweets;
+}
 ?>
