@@ -1,6 +1,7 @@
 <?php
 include "./views/header.php";
 ?>
+ <?php include "./views/navigation.php"; ?>
 <h2>Explore the World and see the Latest</h2>
 <h3>Follow others to stay posted</h3>
 <table>

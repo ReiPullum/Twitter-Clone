@@ -1,6 +1,7 @@
 <?php
 include "./views/header.php";
 ?>
+ <?php include "./views/navigation.php"; ?>
 <h2>Welcome to Twitter-Clone!!</h2>
 <h3>Login Below to Continue</h3>
 
